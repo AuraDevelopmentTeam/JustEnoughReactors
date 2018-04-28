@@ -58,10 +58,10 @@ public class FuelCategory extends BlankJEIRecipeCategory<FuelWrapper> {
       @Nonnull IIngredients ingredients) {
     final IGuiItemStackGroup itemStacks = recipeLayout.getItemStacks();
 
-    itemStacks.init(0, true, 1, 1);
-    itemStacks.init(1, false, 59, 1);
+    itemStacks.init(0, true, 0, 0);
+    itemStacks.init(1, false, 58, 0);
 
-    itemStacks.set(0, recipeWrapper.getFuelEntry().getFuel());
-    itemStacks.set(1, recipeWrapper.getFuelEntry().getWaste());
+    itemStacks.set(0, ingredients.getInputs(ItemStack.class).get(0));
+    itemStacks.set(1, ingredients.getOutputs(ItemStack.class).get(0));
   }
 }

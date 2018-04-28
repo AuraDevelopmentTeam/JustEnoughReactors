@@ -1,5 +1,6 @@
 package dev.aura.justenoughreactors.jei.fuel;
 
+import dev.aura.justenoughreactors.util.OreDictHelper;
 import javax.annotation.Nonnull;
 import lombok.NonNull;
 import lombok.Value;
@@ -13,7 +14,7 @@ public class FuelWrapper implements IRecipeWrapper {
 
   @Override
   public void getIngredients(@Nonnull IIngredients ingredients) {
-    ingredients.setInput(ItemStack.class, fuelEntry.getFuel());
-    ingredients.setOutput(ItemStack.class, fuelEntry.getWaste());
+    ingredients.setInput(ItemStack.class, OreDictHelper.oreDictToItemStacks(fuelEntry.getFuel()));
+    ingredients.setOutput(ItemStack.class, OreDictHelper.oreDictToItemStacks(fuelEntry.getWaste()));
   }
 }
