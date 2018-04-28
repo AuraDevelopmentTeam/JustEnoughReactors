@@ -32,7 +32,7 @@ public class JustEnoughReactors implements IModPlugin {
 
   @Override
   public void registerCategories(IRecipeCategoryRegistration registry) {
-    registry.addRecipeCategories(new FuelCategory());
+    registry.addRecipeCategories(new FuelCategory(registry.getJeiHelpers()));
   }
 
   @Override

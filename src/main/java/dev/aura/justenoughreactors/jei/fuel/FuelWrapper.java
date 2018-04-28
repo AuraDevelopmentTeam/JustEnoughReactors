@@ -1,14 +1,15 @@
 package dev.aura.justenoughreactors.jei.fuel;
 
-import javax.annotation.Nonnull;
-import lombok.RequiredArgsConstructor;
+import lombok.NonNull;
+import lombok.Value;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.ItemStack;
+import javax.annotation.Nonnull;
 
-@RequiredArgsConstructor
+@Value
 public class FuelWrapper implements IRecipeWrapper {
-  private final FuelEntry fuelEntry;
+  @NonNull private final FuelEntry fuelEntry;
 
   @Override
   public void getIngredients(@Nonnull IIngredients ingredients) {

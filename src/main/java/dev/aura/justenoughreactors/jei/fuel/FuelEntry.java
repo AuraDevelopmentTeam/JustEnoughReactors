@@ -1,10 +1,11 @@
 package dev.aura.justenoughreactors.jei.fuel;
 
+import lombok.NonNull;
 import lombok.Value;
 import net.minecraft.item.ItemStack;
 
 @Value
 public class FuelEntry {
-  private final ItemStack fuel;
-  private final ItemStack waste;
+  @NonNull private final ItemStack fuel;
+  @NonNull private final ItemStack waste;
 }
