@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableSortedMap;
 import dev.aura.justenoughreactors.jei.fuel.FuelCategory;
 import dev.aura.justenoughreactors.jei.fuel.FuelEntry;
 import dev.aura.justenoughreactors.jei.fuel.FuelWrapper;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import erogenousbeef.bigreactors.api.data.ReactorReaction;
 import erogenousbeef.bigreactors.api.data.SourceProductMapping;
 import erogenousbeef.bigreactors.init.BrBlocks;
@@ -18,6 +19,10 @@ import net.minecraft.item.ItemStack;
 
 @UtilityClass
 public class FuelRecipes {
+  @SuppressFBWarnings(
+    value = "NP_NONNULL_PARAM_VIOLATION",
+    justification = "BrBlocks.* won't be null at runtime!"
+  )
   public static void registerFuelRecipes(IModRegistry registry) {
     registry.addRecipeCatalyst(new ItemStack(BrBlocks.reactorController), FuelCategory.ID);
     registry.addRecipeCatalyst(new ItemStack(BrBlocks.reactorFuelRod), FuelCategory.ID);
