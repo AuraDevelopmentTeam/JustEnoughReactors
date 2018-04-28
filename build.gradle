@@ -1,9 +1,24 @@
 apply from: "GradleCommon/common.gradle"
 
 repositories {
-    // Additional repositories
+    maven { // JEI, Natura, Mantle, TiCon
+        name "JEI"
+        url "http://dvs1.progwml6.com/files/maven"
+    }
+    maven { // ZeroCore
+        name "zerocore"
+        url "http://maven.zerono.it"
+    }
+    flatDir {
+        dirs "lib"
+    }
 }
 
 dependencies {
-    // Additional dependencies
+    deobfCompile "mezz.jei:jei_${minecraft_version}:${jei_version}"
+
+    deobfCompile "erogenousbeef:ExtremeReactors-${minecraft_version}:+"
+    compile("it.zerono.mods.zerocore:zerocore:1.12-${zerocore_version}:deobf") {
+        exclude module: "ComputerCraft"
+    }
 }
