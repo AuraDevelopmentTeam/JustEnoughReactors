@@ -1,11 +1,11 @@
 package dev.aura.justenoughreactors.jei.fuel;
 
+import javax.annotation.Nonnull;
 import lombok.NonNull;
 import lombok.Value;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.ItemStack;
-import javax.annotation.Nonnull;
 
 @Value
 public class FuelWrapper implements IRecipeWrapper {

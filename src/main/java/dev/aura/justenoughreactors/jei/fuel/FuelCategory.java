@@ -2,6 +2,7 @@ package dev.aura.justenoughreactors.jei.fuel;
 
 import dev.aura.justenoughreactors.jei.BlankJEIRecipeCategory;
 import dev.aura.justenoughreactors.util.Resources;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import erogenousbeef.bigreactors.init.BrItems;
 import javax.annotation.Nonnull;
 import lombok.Getter;
@@ -28,6 +29,10 @@ public class FuelCategory extends BlankJEIRecipeCategory<FuelWrapper> {
     this(helpers.getGuiHelper());
   }
 
+  @SuppressFBWarnings(
+    value = "NP_NONNULL_PARAM_VIOLATION",
+    justification = "BrItems.ingotMetals won't be null at runtime!"
+  )
   public FuelCategory(IGuiHelper guiHelper) {
     super(guiHelper.createDrawableIngredient(new ItemStack(BrItems.ingotMetals, 1, 0)));
 
