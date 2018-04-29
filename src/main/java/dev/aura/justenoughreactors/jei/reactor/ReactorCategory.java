@@ -1,6 +1,7 @@
 package dev.aura.justenoughreactors.jei.reactor;
 
 import dev.aura.justenoughreactors.jei.BlankJEIRecipeCategory;
+import dev.aura.justenoughreactors.util.DrawableFrame;
 import dev.aura.justenoughreactors.util.Resources;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import erogenousbeef.bigreactors.init.BrBlocks;
@@ -38,7 +39,11 @@ public class ReactorCategory extends BlankJEIRecipeCategory<ReactorWrapper> {
   public ReactorCategory(IGuiHelper guiHelper) {
     super(guiHelper.createDrawableIngredient(new ItemStack(BrBlocks.reactorCasing, 1, 0)));
 
-    background = guiHelper.createDrawable(Resources.getBackgroundTexture(), 0, 0, 76, 18);
+    background =
+        new DrawableFrame(
+            Resources.getReactorCornerTexture(),
+            Resources.getReactorSideTexture(),
+            Resources.getReactorCenterTexture());
   }
 
   @Nonnull
@@ -61,13 +66,13 @@ public class ReactorCategory extends BlankJEIRecipeCategory<ReactorWrapper> {
     if (recipeWrapper.getReactorEntry().isBlock()) {
       final IGuiItemStackGroup itemStacks = recipeLayout.getItemStacks();
 
-      itemStacks.init(0, true, 0, 0);
+      itemStacks.init(0, true, 15, 15);
 
       itemStacks.set(0, ingredients.getInputs(ItemStack.class).get(0));
     } else {
       final IGuiFluidStackGroup fluidStacks = recipeLayout.getFluidStacks();
 
-      fluidStacks.init(0, true, 0, 0);
+      fluidStacks.init(0, true, 16, 16);
 
       fluidStacks.set(0, ingredients.getInputs(FluidStack.class).get(0));
     }

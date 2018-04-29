@@ -31,9 +31,9 @@ public class FuelRecipes {
     justification = "BrBlocks.* won't be null at runtime!"
   )
   public static void registerFuelRecipes(IModRegistry registry) {
-    registry.addRecipeCatalyst(new ItemStack(BrBlocks.reactorController), FuelCategory.ID);
     registry.addRecipeCatalyst(new ItemStack(BrBlocks.reactorFuelRod), FuelCategory.ID);
     registry.addRecipeCatalyst(new ItemStack(BrBlocks.reactorControlRod), FuelCategory.ID);
+    registry.addRecipeCatalyst(new ItemStack(BrBlocks.reactorController), FuelCategory.ID);
     registry.addRecipeCatalyst(new ItemStack(BrBlocks.reactorAccessPort), FuelCategory.ID);
 
     final ImmutableSortedMap<String, String> conversionMapping = getConversionMapping();
