@@ -1,3 +1,11 @@
+1.0.3
+-----
+
+\+ Added `ru_RU` translation. (thanks to kellixon)  
+\+ Added `zh_CN` translation. (thanks to DYColdWind)  
+\* Include Minecraft version in file name.  
+
+
 1.0.2
 -----
 
