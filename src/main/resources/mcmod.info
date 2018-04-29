@@ -8,6 +8,7 @@
         "url": "https://minecraft.curseforge.com/projects/just-enough-reactors",
         "authorList": [
             "The_BrainStone"
-        ]
+        ],
+        "credits": "Way2muchnoise: Inspiration and example code, DYColdWind: `zh_CN` translation, kellixon: `ru_RU` translation"
     }
 ]
