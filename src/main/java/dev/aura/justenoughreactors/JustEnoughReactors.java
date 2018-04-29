@@ -1,6 +1,7 @@
 package dev.aura.justenoughreactors;
 
-import dev.aura.justenoughreactors.reactors.FuelRecipes;
+import dev.aura.justenoughreactors.reactors.recipe.FuelRecipes;
+import dev.aura.justenoughreactors.reactors.recipe.ReactorRecipes;
 import lombok.Getter;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
@@ -33,10 +34,12 @@ public class JustEnoughReactors implements IModPlugin {
   @Override
   public void registerCategories(IRecipeCategoryRegistration registry) {
     FuelRecipes.registerFuelCategory(registry);
+    ReactorRecipes.registerReactorCategory(registry);
   }
 
   @Override
   public void register(IModRegistry registry) {
     FuelRecipes.registerFuelRecipes(registry);
+    ReactorRecipes.registerReactorRecipes(registry);
   }
 }

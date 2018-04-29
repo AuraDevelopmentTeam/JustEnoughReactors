@@ -1,10 +1,11 @@
-package dev.aura.justenoughreactors.reactors;
+package dev.aura.justenoughreactors.reactors.recipe;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSortedMap;
 import dev.aura.justenoughreactors.jei.fuel.FuelCategory;
 import dev.aura.justenoughreactors.jei.fuel.FuelEntry;
 import dev.aura.justenoughreactors.jei.fuel.FuelWrapper;
+import dev.aura.justenoughreactors.reactors.ExtremeReactorsData;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import erogenousbeef.bigreactors.api.data.ReactorReaction;
 import erogenousbeef.bigreactors.api.data.SourceProductMapping;
