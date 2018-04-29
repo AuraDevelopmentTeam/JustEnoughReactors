@@ -15,10 +15,15 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import lombok.experimental.UtilityClass;
 import mezz.jei.api.IModRegistry;
+import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
 
 @UtilityClass
 public class FuelRecipes {
+  public static void registerFuelCategory(IRecipeCategoryRegistration registry) {
+    registry.addRecipeCategories(new FuelCategory(registry));
+  }
+
   @SuppressFBWarnings(
     value = "NP_NONNULL_PARAM_VIOLATION",
     justification = "BrBlocks.* won't be null at runtime!"
