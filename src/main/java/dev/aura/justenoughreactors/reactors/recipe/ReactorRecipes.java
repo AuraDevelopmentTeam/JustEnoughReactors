@@ -3,7 +3,9 @@ package dev.aura.justenoughreactors.reactors.recipe;
 import com.google.common.collect.ImmutableList;
 import dev.aura.justenoughreactors.jei.reactor.ReactorCategory;
 import dev.aura.justenoughreactors.jei.reactor.ReactorEntry;
+import dev.aura.justenoughreactors.jei.reactor.ReactorWrapper;
 import dev.aura.justenoughreactors.reactors.ExtremeReactorsData;
+import dev.aura.justenoughreactors.util.OreDictHelper;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import erogenousbeef.bigreactors.init.BrBlocks;
 import java.util.stream.Collectors;
@@ -33,8 +35,9 @@ public class ReactorRecipes {
 
     registry.addRecipes(
         Stream.concat(
-                blocks.stream().map(ReactorEntry::newBlock),
-                fluids.stream().map(ReactorEntry::newFluid))
+                blocks.stream().filter(OreDictHelper::doesOreExist).map(ReactorEntry::newBlock),
+                fluids.stream().filter(OreDictHelper::doesFluidExist).map(ReactorEntry::newFluid))
+            .map(ReactorWrapper::new)
             .collect(Collectors.toList()),
         ReactorCategory.ID);
   }

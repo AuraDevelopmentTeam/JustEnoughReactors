@@ -9,6 +9,7 @@ import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 
 @Value
 public class ReactorWrapper implements IRecipeWrapper {
@@ -20,7 +21,9 @@ public class ReactorWrapper implements IRecipeWrapper {
       ingredients.setInput(
           ItemStack.class, OreDictHelper.oreDictToItemStacks(reactorEntry.getMaterial()));
     } else {
-      ingredients.setInput(Fluid.class, FluidRegistry.getFluid(reactorEntry.getMaterial()));
+      ingredients.setInput(
+          FluidStack.class,
+          FluidRegistry.getFluidStack(reactorEntry.getMaterial(), Fluid.BUCKET_VOLUME));
     }
   }
 }

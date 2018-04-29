@@ -6,6 +6,7 @@ import dev.aura.justenoughreactors.jei.fuel.FuelCategory;
 import dev.aura.justenoughreactors.jei.fuel.FuelEntry;
 import dev.aura.justenoughreactors.jei.fuel.FuelWrapper;
 import dev.aura.justenoughreactors.reactors.ExtremeReactorsData;
+import dev.aura.justenoughreactors.util.OreDictHelper;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import erogenousbeef.bigreactors.api.data.ReactorReaction;
 import erogenousbeef.bigreactors.api.data.SourceProductMapping;
@@ -66,7 +67,7 @@ public class FuelRecipes {
     return ExtremeReactorsData.Reactants_reactantToSolid.entrySet()
         .stream()
         .collect(
-            ImmutableMap.toImmutableMap(
+            Collectors.toMap(
                 Map.Entry::getKey,
                 entry ->
                     entry
@@ -74,6 +75,11 @@ public class FuelRecipes {
                         .stream()
                         .map(SourceProductMapping::getProduct)
                         .distinct()
-                        .collect(Collectors.toList())));
+                        .filter(OreDictHelper::doesOreExist)
+                        .collect(Collectors.toList())))
+        .entrySet()
+        .stream()
+        .filter(entry -> !entry.getValue().isEmpty())
+        .collect(ImmutableMap.toImmutableMap(Map.Entry::getKey, Map.Entry::getValue));
   }
 }

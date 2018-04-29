@@ -9,12 +9,14 @@ import lombok.Getter;
 import mezz.jei.api.IGuiHelper;
 import mezz.jei.api.IJeiHelpers;
 import mezz.jei.api.gui.IDrawable;
+import mezz.jei.api.gui.IGuiFluidStackGroup;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 public class ReactorCategory extends BlankJEIRecipeCategory<ReactorWrapper> {
   public static final String ID = "justenoughreactors:reactor";
@@ -56,10 +58,18 @@ public class ReactorCategory extends BlankJEIRecipeCategory<ReactorWrapper> {
       @Nonnull IRecipeLayout recipeLayout,
       @Nonnull ReactorWrapper recipeWrapper,
       @Nonnull IIngredients ingredients) {
-    final IGuiItemStackGroup itemStacks = recipeLayout.getItemStacks();
+    if (recipeWrapper.getReactorEntry().isBlock()) {
+      final IGuiItemStackGroup itemStacks = recipeLayout.getItemStacks();
 
-    itemStacks.init(0, true, 0, 0);
+      itemStacks.init(0, true, 0, 0);
 
-    itemStacks.set(0, ingredients.getInputs(ItemStack.class).get(0));
+      itemStacks.set(0, ingredients.getInputs(ItemStack.class).get(0));
+    } else {
+      final IGuiFluidStackGroup fluidStacks = recipeLayout.getFluidStacks();
+
+      fluidStacks.init(0, true, 0, 0);
+
+      fluidStacks.set(0, ingredients.getInputs(FluidStack.class).get(0));
+    }
   }
 }
