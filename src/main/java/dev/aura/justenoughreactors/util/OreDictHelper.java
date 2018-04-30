@@ -23,7 +23,8 @@ public class OreDictHelper {
   }
 
   public static boolean doesOreExist(String oreDictEntry) {
-    return OreDictionary.doesOreNameExist(oreDictEntry);
+    return OreDictionary.doesOreNameExist(oreDictEntry)
+        && !OreDictionary.getOres(oreDictEntry).isEmpty();
   }
 
   public static boolean doesFluidExist(String fluidDictEntry) {
