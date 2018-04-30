@@ -61,9 +61,9 @@ public class DrawableFrame implements IDrawable {
 
     minecraft.getTextureManager().bindTexture(side);
     drawTexturedRectangle(x + shift1, y, 0);
-    drawTexturedRectangle(x, y + shift1, 90);
+    drawTexturedRectangle(x + shift2, y + shift1, 90);
     drawTexturedRectangle(x + shift1, y + shift2, 180);
-    drawTexturedRectangle(x + shift2, y + shift1, 270);
+    drawTexturedRectangle(x, y + shift1, 270);
 
     minecraft.getTextureManager().bindTexture(center);
     drawTexturedRectangle(x + shift1, y + shift1, 0);
