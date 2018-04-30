@@ -1,3 +1,14 @@
+1.1.0
+-----
+
+\+ Added Reactor Interior recipes.  
+\+ Added Turbine Coil recipes.  
+\+ Added credits in `mcmod.info`.  
+\* Updated `en_US`, `en_UD`, `de_DE`, `zh_CN` (DYColdWind), `ru_RU` (kellixon) translations.  
+\* Filtering nonexistent entries.  
+\* Internal improvements.  
+
+
 1.0.3
 -----
 
