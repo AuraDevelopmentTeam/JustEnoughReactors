@@ -30,7 +30,7 @@ public class ExtremeReactorsData {
       getImmutableMapping(TurbineCoil.class, "_blocks");
 
   @SuppressWarnings("unchecked")
-  private static <K, V> Map<K, V> getMapping(Class<?> mappingClass, String mappingName) {
+  static <K, V> Map<K, V> getMapping(Class<?> mappingClass, String mappingName) {
     try {
       final Field mappingField = mappingClass.getDeclaredField(mappingName);
       mappingField.setAccessible(true);
@@ -44,8 +44,7 @@ public class ExtremeReactorsData {
     }
   }
 
-  private static <K, V> ImmutableMap<K, V> getImmutableMapping(
-      Class<?> mappingClass, String mappingName) {
+  static <K, V> ImmutableMap<K, V> getImmutableMapping(Class<?> mappingClass, String mappingName) {
     return ImmutableMap.copyOf(getMapping(mappingClass, mappingName));
   }
 }
