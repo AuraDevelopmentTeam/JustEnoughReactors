@@ -15,7 +15,6 @@ import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 
@@ -50,12 +49,6 @@ public class ReactorCategory extends BlankJEIRecipeCategory<ReactorWrapper> {
   @Override
   public String getUid() {
     return ID;
-  }
-
-  @Nonnull
-  @Override
-  public String getTitle() {
-    return I18n.format("justenoughreactors.gui.reactor.title");
   }
 
   @Override
