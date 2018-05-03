@@ -1,12 +1,17 @@
 package dev.aura.justenoughreactors.reactors;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import com.google.common.collect.ImmutableMap;
+import erogenousbeef.bigreactors.api.data.CoilPartData;
+import erogenousbeef.bigreactors.api.data.ReactorInteriorData;
 import erogenousbeef.bigreactors.api.data.ReactorReaction;
 import erogenousbeef.bigreactors.api.data.SourceProductMapping;
 import erogenousbeef.bigreactors.api.registry.Reactants;
 import erogenousbeef.bigreactors.api.registry.ReactorConversions;
+import erogenousbeef.bigreactors.api.registry.ReactorInterior;
+import erogenousbeef.bigreactors.api.registry.TurbineCoil;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.BeforeClass;
@@ -32,6 +37,18 @@ public class ExtremeReactorsDataTest {
 
     ReactorConversions.register(MAT1, MAT2);
     ReactorConversions.register(MAT3, MAT2, 1.23f, 3.21f);
+
+    ReactorInterior.registerBlock(ORE1, 1.0f, 2.0f, 3.0f, 4.0f);
+    ReactorInterior.registerBlock(ORE2, 4.0f, 3.0f, 2.0f, 1.0f);
+    ReactorInterior.registerBlock(ORE3, 0.0f, 0.0f, 0.0f, 0.0f);
+
+    ReactorInterior.registerFluid(ORE1, 1.0f, 2.0f, 3.0f, 4.0f);
+    ReactorInterior.registerFluid(ORE2, 4.0f, 3.0f, 2.0f, 1.0f);
+    ReactorInterior.registerFluid(ORE3, 0.0f, 0.0f, 0.0f, 0.0f);
+
+    TurbineCoil.registerBlock(ORE1, 1.0f, 2.0f, 3.0f);
+    TurbineCoil.registerBlock(ORE2, 4.0f, 3.0f, 2.0f);
+    TurbineCoil.registerBlock(ORE3, 0.0f, 0.0f, 0.0f);
   }
 
   @Test
@@ -61,9 +78,62 @@ public class ExtremeReactorsDataTest {
     assertEquals(expected, ExtremeReactorsData.ReactorConversions_reactions);
   }
 
-  @Test(expected = IllegalArgumentException.class)
-  public void getMappingErrorTest() {
-    ExtremeReactorsData.getMapping(Object.class, "Does not exist!");
+  @Test
+  public void ReactorInterior_reactorModeratorBlocksTest() {
+    final ImmutableMap<String, ReactorInteriorData> expected =
+        ImmutableMap.<String, ReactorInteriorData>builder()
+            .put(ORE1, new FixedReactorInteriorData(1.0f, 2.0f, 3.0f, 4.0f))
+            .put(ORE2, new FixedReactorInteriorData(4.0f, 3.0f, 2.0f, 1.0f))
+            .put(ORE3, new FixedReactorInteriorData(0.0f, 0.0f, 0.0f, 0.0f))
+            .build();
+
+    assertEquals(expected, ExtremeReactorsData.ReactorInterior_reactorModeratorBlocks);
+  }
+
+  @Test
+  public void ReactorInterior_reactorModeratorFluidsTest() {
+    final ImmutableMap<String, ReactorInteriorData> expected =
+        ImmutableMap.<String, ReactorInteriorData>builder()
+            .put(ORE1, new FixedReactorInteriorData(1.0f, 2.0f, 3.0f, 4.0f))
+            .put(ORE2, new FixedReactorInteriorData(4.0f, 3.0f, 2.0f, 1.0f))
+            .put(ORE3, new FixedReactorInteriorData(0.0f, 0.0f, 0.0f, 0.0f))
+            .build();
+
+    assertEquals(expected, ExtremeReactorsData.ReactorInterior_reactorModeratorFluids);
+  }
+
+  @Test
+  public void TurbineCoil_blocksTest() {
+    final ImmutableMap<String, CoilPartData> expected =
+        ImmutableMap.<String, CoilPartData>builder()
+            .put(ORE1, new FixedCoilPartData(1.0f, 2.0f, 3.0f))
+            .put(ORE2, new FixedCoilPartData(4.0f, 3.0f, 2.0f))
+            .put(ORE3, new FixedCoilPartData(0.0f, 0.0f, 0.0f))
+            .build();
+
+    assertEquals(expected, ExtremeReactorsData.TurbineCoil_blocks);
+  }
+
+  @Test(expected = NoSuchFieldException.class)
+  public void getMappingErrorTest() throws Throwable {
+    try {
+      ExtremeReactorsData.getMapping(Object.class, "Does not exist!");
+    } catch (IllegalArgumentException e) {
+      throw e.getCause();
+    }
+
+    fail("Expected IllegalArgumentException");
+  }
+
+  @Test(expected = ClassCastException.class)
+  public void getClassCastErrorTest() throws Throwable {
+    try {
+      ExtremeReactorsData.getMapping(String.class, "serialPersistentFields");
+    } catch (IllegalArgumentException e) {
+      throw e.getCause();
+    }
+
+    fail("Expected IllegalArgumentException");
   }
 
   private static class FixedSourceProductMapping extends SourceProductMapping {
@@ -147,6 +217,76 @@ public class ExtremeReactorsDataTest {
           + reactivity
           + ",fissionRate="
           + fissionRate;
+    }
+  }
+
+  private static class FixedReactorInteriorData extends ReactorInteriorData {
+    public FixedReactorInteriorData(
+        float absorption, float heatEfficiency, float moderation, float heatConductivity) {
+      super(absorption, heatEfficiency, moderation, heatConductivity);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+      if ((obj == null) || !(obj instanceof ReactorInteriorData)) return false;
+
+      final ReactorInteriorData mapping = (ReactorInteriorData) obj;
+
+      return (absorption == mapping.absorption)
+          && (heatEfficiency == mapping.heatEfficiency)
+          && (moderation == mapping.moderation)
+          && (heatConductivity == mapping.heatConductivity);
+    }
+
+    @Override
+    public int hashCode() {
+      assert false : "hashCode not designed";
+      return 42;
+    }
+
+    @Override
+    public String toString() {
+      return "absorption="
+          + absorption
+          + ",heatEfficiency="
+          + heatEfficiency
+          + ",moderation="
+          + moderation
+          + ",heatConductivity="
+          + heatConductivity;
+    }
+  }
+
+  private static class FixedCoilPartData extends CoilPartData {
+    public FixedCoilPartData(float efficiency, float bonus, float extractionRate) {
+      super(efficiency, bonus, extractionRate);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+      if ((obj == null) || !(obj instanceof CoilPartData)) return false;
+
+      final CoilPartData mapping = (CoilPartData) obj;
+
+      return (efficiency == mapping.efficiency)
+          && (bonus == mapping.bonus)
+          && (energyExtractionRate == mapping.energyExtractionRate);
+    }
+
+    @Override
+    public int hashCode() {
+      assert false : "hashCode not designed";
+      return 42;
+    }
+
+    @Override
+    public String toString() {
+      return "efficiency="
+          + efficiency
+          + ",bonus="
+          + bonus
+          + ",energyExtractionRate="
+          + energyExtractionRate;
     }
   }
 }

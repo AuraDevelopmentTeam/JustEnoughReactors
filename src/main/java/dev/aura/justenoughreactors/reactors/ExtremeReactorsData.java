@@ -39,7 +39,8 @@ public class ExtremeReactorsData {
     } catch (NoSuchFieldException
         | SecurityException
         | IllegalArgumentException
-        | IllegalAccessException e) {
+        | IllegalAccessException
+        | ClassCastException e) {
       throw new IllegalArgumentException(e);
     }
   }
