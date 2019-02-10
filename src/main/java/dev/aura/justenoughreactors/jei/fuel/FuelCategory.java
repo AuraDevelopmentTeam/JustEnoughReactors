@@ -14,6 +14,7 @@ import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
+import net.minecraft.item.ItemStack;
 
 public class FuelCategory extends BlankJEIRecipeCategory<FuelWrapper> {
   public static final String ID = "justenoughreactors:fuel";
@@ -33,7 +34,7 @@ public class FuelCategory extends BlankJEIRecipeCategory<FuelWrapper> {
     justification = "BrItems.ingotMetals won't be null at runtime!"
   )
   public FuelCategory(IGuiHelper guiHelper) {
-    super(guiHelper.createDrawableIngredient(BrItems.ingotYellorium));
+    super(guiHelper.createDrawableIngredient(new ItemStack(BrItems.ingotYellorium, 1, 0)));
 
     background = guiHelper.createDrawable(Resources.getBackgroundTexture(), 0, 0, 76, 18);
   }
