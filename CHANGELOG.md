@@ -1,3 +1,8 @@
+1.1.2
+-----
+
+\* Updated to latest Extreme Reactors (Fixes [#7](https://github.com/AuraDevelopmentTeam/JustEnoughReactors/issues/7)).  
+
 1.1.1
 -----
 
