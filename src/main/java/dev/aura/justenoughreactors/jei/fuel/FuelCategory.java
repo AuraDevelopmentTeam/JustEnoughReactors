@@ -33,7 +33,7 @@ public class FuelCategory extends BlankJEIRecipeCategory<FuelWrapper> {
     justification = "BrItems.ingotMetals won't be null at runtime!"
   )
   public FuelCategory(IGuiHelper guiHelper) {
-    super(guiHelper.createDrawableIngredient(new ItemStack(BrItems.ingotMetals, 1, 0)));
+    super(guiHelper.createDrawableIngredient(BrItems.ingotYellorium));
 
     background = guiHelper.createDrawable(Resources.getBackgroundTexture(), 0, 0, 76, 18);
   }
