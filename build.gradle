@@ -18,7 +18,7 @@ dependencies {
     deobfCompile "mezz.jei:jei_${minecraft_version}:${jei_version}"
 
     deobfCompile "erogenousbeef:ExtremeReactors-${minecraft_version}:+"
-    compile("it.zerono.mods.zerocore:zerocore:1.12-${zerocore_version}:deobf") {
+    deobfCompile("it.zerono.mods.zerocore:zerocore:1.12-${zerocore_version}") {
         exclude module: "ComputerCraft"
     }
 }
