@@ -14,9 +14,9 @@ import mezz.jei.api.gui.IGuiFluidStackGroup;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
 
 public class ReactorCategory extends BlankJEIRecipeCategory<ReactorWrapper> {
   public static final String ID = "justenoughreactors:reactor";
@@ -61,13 +61,13 @@ public class ReactorCategory extends BlankJEIRecipeCategory<ReactorWrapper> {
 
       itemStacks.init(0, true, 15, 15);
 
-      itemStacks.set(0, ingredients.getInputs(ItemStack.class).get(0));
+      itemStacks.set(0, ingredients.getInputs(VanillaTypes.ITEM).get(0));
     } else {
       final IGuiFluidStackGroup fluidStacks = recipeLayout.getFluidStacks();
 
       fluidStacks.init(0, true, 16, 16);
 
-      fluidStacks.set(0, ingredients.getInputs(FluidStack.class).get(0));
+      fluidStacks.set(0, ingredients.getInputs(VanillaTypes.FLUID).get(0));
     }
   }
 }

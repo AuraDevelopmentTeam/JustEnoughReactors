@@ -12,8 +12,8 @@ import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
-import net.minecraft.item.ItemStack;
 
 public class FuelCategory extends BlankJEIRecipeCategory<FuelWrapper> {
   public static final String ID = "justenoughreactors:fuel";
@@ -54,7 +54,7 @@ public class FuelCategory extends BlankJEIRecipeCategory<FuelWrapper> {
     itemStacks.init(0, true, 0, 0);
     itemStacks.init(1, false, 58, 0);
 
-    itemStacks.set(0, ingredients.getInputs(ItemStack.class).get(0));
-    itemStacks.set(1, ingredients.getOutputs(ItemStack.class).get(0));
+    itemStacks.set(0, ingredients.getInputs(VanillaTypes.ITEM).get(0));
+    itemStacks.set(1, ingredients.getOutputs(VanillaTypes.ITEM).get(0));
   }
 }

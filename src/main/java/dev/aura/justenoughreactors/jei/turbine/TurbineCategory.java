@@ -13,6 +13,7 @@ import mezz.jei.api.gui.IDrawable;
 import mezz.jei.api.gui.IGuiItemStackGroup;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
 
@@ -58,6 +59,6 @@ public class TurbineCategory extends BlankJEIRecipeCategory<TurbineWrapper> {
 
     itemStacks.init(0, true, 15, 15);
 
-    itemStacks.set(0, ingredients.getInputs(ItemStack.class).get(0));
+    itemStacks.set(0, ingredients.getInputs(VanillaTypes.ITEM).get(0));
   }
 }

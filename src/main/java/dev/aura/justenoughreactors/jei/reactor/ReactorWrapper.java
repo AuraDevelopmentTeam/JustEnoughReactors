@@ -5,11 +5,10 @@ import javax.annotation.Nonnull;
 import lombok.NonNull;
 import lombok.Value;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
 
 @Value
 public class ReactorWrapper implements IRecipeWrapper {
@@ -18,11 +17,11 @@ public class ReactorWrapper implements IRecipeWrapper {
   @Override
   public void getIngredients(@Nonnull IIngredients ingredients) {
     if (reactorEntry.isBlock()) {
-      ingredients.setInput(
-          ItemStack.class, OreDictHelper.oreDictToItemStacks(reactorEntry.getMaterial()));
+      ingredients.setInputs(
+          VanillaTypes.ITEM, OreDictHelper.oreDictToItemStacks(reactorEntry.getMaterial()));
     } else {
       ingredients.setInput(
-          FluidStack.class,
+          VanillaTypes.FLUID,
           FluidRegistry.getFluidStack(reactorEntry.getMaterial(), Fluid.BUCKET_VOLUME));
     }
   }

@@ -5,8 +5,8 @@ import javax.annotation.Nonnull;
 import lombok.NonNull;
 import lombok.Value;
 import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.ingredients.VanillaTypes;
 import mezz.jei.api.recipe.IRecipeWrapper;
-import net.minecraft.item.ItemStack;
 
 @Value
 public class TurbineWrapper implements IRecipeWrapper {
@@ -14,7 +14,7 @@ public class TurbineWrapper implements IRecipeWrapper {
 
   @Override
   public void getIngredients(@Nonnull IIngredients ingredients) {
-    ingredients.setInput(
-        ItemStack.class, OreDictHelper.oreDictToItemStacks(turbineEntry.getMaterial()));
+    ingredients.setInputs(
+        VanillaTypes.ITEM, OreDictHelper.oreDictToItemStacks(turbineEntry.getMaterial()));
   }
 }
