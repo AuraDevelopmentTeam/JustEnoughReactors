@@ -1,7 +1,15 @@
+1.1.3
+-----
+
+\* Fixed a ~~derp~~ new issue while starting.  
+
+
 1.1.2
 -----
 
 \* Updated to latest Extreme Reactors (Fixes [#7](https://github.com/AuraDevelopmentTeam/JustEnoughReactors/issues/7)).  
+\* Internal improvements.  
+
 
 1.1.1
 -----
