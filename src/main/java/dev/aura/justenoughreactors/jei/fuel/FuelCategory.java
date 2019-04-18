@@ -1,5 +1,6 @@
 package dev.aura.justenoughreactors.jei.fuel;
 
+import dev.aura.justenoughreactors.JustEnoughReactors;
 import dev.aura.justenoughreactors.jei.BlankJEIRecipeCategory;
 import dev.aura.justenoughreactors.util.Resources;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -17,7 +18,7 @@ import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
 
 public class FuelCategory extends BlankJEIRecipeCategory<FuelWrapper> {
-  public static final String ID = "justenoughreactors:fuel";
+  public static final String ID = JustEnoughReactors.ID + ":fuel";
 
   @Getter private final IDrawable background;
 

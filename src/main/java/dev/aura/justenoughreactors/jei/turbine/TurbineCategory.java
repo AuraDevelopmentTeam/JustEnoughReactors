@@ -1,5 +1,6 @@
 package dev.aura.justenoughreactors.jei.turbine;
 
+import dev.aura.justenoughreactors.JustEnoughReactors;
 import dev.aura.justenoughreactors.jei.BlankJEIRecipeCategory;
 import dev.aura.justenoughreactors.util.DrawableFrame;
 import dev.aura.justenoughreactors.util.Resources;
@@ -18,7 +19,7 @@ import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import net.minecraft.item.ItemStack;
 
 public class TurbineCategory extends BlankJEIRecipeCategory<TurbineWrapper> {
-  public static final String ID = "justenoughreactors:turbine";
+  public static final String ID = JustEnoughReactors.ID + ":turbine";
 
   @Getter private final IDrawable background;
 
