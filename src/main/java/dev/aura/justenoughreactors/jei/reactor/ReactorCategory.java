@@ -33,9 +33,8 @@ public class ReactorCategory extends BlankJEIRecipeCategory<ReactorWrapper> {
   }
 
   @SuppressFBWarnings(
-    value = "NP_NONNULL_PARAM_VIOLATION",
-    justification = "BrBlocks.reactorCasing won't be null at runtime!"
-  )
+      value = "NP_NONNULL_PARAM_VIOLATION",
+      justification = "BrBlocks.reactorCasing won't be null at runtime!")
   public ReactorCategory(IGuiHelper guiHelper) {
     super(guiHelper.createDrawableIngredient(new ItemStack(BrBlocks.reactorCasing, 1, 0)));
 

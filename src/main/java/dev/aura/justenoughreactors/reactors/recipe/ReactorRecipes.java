@@ -22,9 +22,8 @@ public class ReactorRecipes {
   }
 
   @SuppressFBWarnings(
-    value = "NP_NONNULL_PARAM_VIOLATION",
-    justification = "BrBlocks.* won't be null at runtime!"
-  )
+      value = "NP_NONNULL_PARAM_VIOLATION",
+      justification = "BrBlocks.* won't be null at runtime!")
   public static void registerReactorRecipes(IModRegistry registry) {
     registry.addRecipeCatalyst(new ItemStack(BrBlocks.reactorCasing), ReactorCategory.ID);
     registry.addRecipeCatalyst(new ItemStack(BrBlocks.reactorGlass), ReactorCategory.ID);

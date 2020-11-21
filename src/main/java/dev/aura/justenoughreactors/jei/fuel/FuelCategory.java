@@ -31,9 +31,8 @@ public class FuelCategory extends BlankJEIRecipeCategory<FuelWrapper> {
   }
 
   @SuppressFBWarnings(
-    value = "NP_NONNULL_PARAM_VIOLATION",
-    justification = "BrItems.ingotMetals won't be null at runtime!"
-  )
+      value = "NP_NONNULL_PARAM_VIOLATION",
+      justification = "BrItems.ingotMetals won't be null at runtime!")
   public FuelCategory(IGuiHelper guiHelper) {
     super(guiHelper.createDrawableIngredient(new ItemStack(BrItems.ingotYellorium, 1, 0)));
 

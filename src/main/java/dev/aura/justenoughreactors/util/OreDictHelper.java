@@ -15,8 +15,7 @@ public class OreDictHelper {
   }
 
   public static NonNullList<ItemStack> oreDictToItemStacks(List<String> oreDictEntries) {
-    return oreDictEntries
-        .stream()
+    return oreDictEntries.stream()
         .map(OreDictHelper::oreDictToItemStacks)
         .flatMap(Collection::stream)
         .collect(NonNullList::create, NonNullList::add, NonNullList::addAll);

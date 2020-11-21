@@ -21,9 +21,8 @@ public class TurbineRecipes {
   }
 
   @SuppressFBWarnings(
-    value = "NP_NONNULL_PARAM_VIOLATION",
-    justification = "BrBlocks.* won't be null at runtime!"
-  )
+      value = "NP_NONNULL_PARAM_VIOLATION",
+      justification = "BrBlocks.* won't be null at runtime!")
   public static void registerTurbineRecipes(IModRegistry registry) {
     registry.addRecipeCatalyst(new ItemStack(BrBlocks.turbineRotorBlade), TurbineCategory.ID);
     registry.addRecipeCatalyst(new ItemStack(BrBlocks.turbineRotorShaft), TurbineCategory.ID);
@@ -35,8 +34,7 @@ public class TurbineRecipes {
     final ImmutableList<String> blocks = getBlocks();
 
     registry.addRecipes(
-        blocks
-            .stream()
+        blocks.stream()
             .filter(OreDictHelper::doesOreExist)
             .map(TurbineEntry::new)
             .map(TurbineWrapper::new)

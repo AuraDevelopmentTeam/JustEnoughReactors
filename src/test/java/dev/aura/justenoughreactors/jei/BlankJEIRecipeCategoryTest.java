@@ -52,9 +52,8 @@ public class BlankJEIRecipeCategoryTest {
     }
 
     @SuppressFBWarnings(
-      value = "NP_NONNULL_RETURN_VIOLATION",
-      justification = "Doesn't matter in testing. Method won't get called!"
-    )
+        value = "NP_NONNULL_RETURN_VIOLATION",
+        justification = "Doesn't matter in testing. Method won't get called!")
     @Override
     public IDrawable getBackground() {
       return null;

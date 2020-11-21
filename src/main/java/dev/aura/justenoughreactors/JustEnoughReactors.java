@@ -12,12 +12,11 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.Instance;
 
 @Mod(
-  modid = JustEnoughReactors.ID,
-  name = JustEnoughReactors.NAME,
-  version = JustEnoughReactors.VERSION,
-  dependencies = JustEnoughReactors.DEPENDENCIES,
-  certificateFingerprint = JustEnoughReactors.FINGERPRINT
-)
+    modid = JustEnoughReactors.ID,
+    name = JustEnoughReactors.NAME,
+    version = JustEnoughReactors.VERSION,
+    dependencies = JustEnoughReactors.DEPENDENCIES,
+    certificateFingerprint = JustEnoughReactors.FINGERPRINT)
 @JEIPlugin
 public class JustEnoughReactors implements IModPlugin {
   public static final String ID = "@id@";

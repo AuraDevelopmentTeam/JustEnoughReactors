@@ -27,9 +27,8 @@ public class FuelRecipes {
   }
 
   @SuppressFBWarnings(
-    value = "NP_NONNULL_PARAM_VIOLATION",
-    justification = "BrBlocks.* won't be null at runtime!"
-  )
+      value = "NP_NONNULL_PARAM_VIOLATION",
+      justification = "BrBlocks.* won't be null at runtime!")
   public static void registerFuelRecipes(IModRegistry registry) {
     registry.addRecipeCatalyst(new ItemStack(BrBlocks.reactorFuelRod), FuelCategory.ID);
     registry.addRecipeCatalyst(new ItemStack(BrBlocks.reactorControlRod), FuelCategory.ID);
@@ -40,9 +39,7 @@ public class FuelRecipes {
     final ImmutableMap<String, List<String>> fuelOreDictMapping = getFuelOreDictMapping();
 
     registry.addRecipes(
-        conversionMapping
-            .entrySet()
-            .stream()
+        conversionMapping.entrySet().stream()
             .map(
                 entry ->
                     new FuelEntry(
@@ -54,8 +51,7 @@ public class FuelRecipes {
   }
 
   private static ImmutableSortedMap<String, String> getConversionMapping() {
-    return ExtremeReactorsData.ReactorConversions_reactions.values()
-        .stream()
+    return ExtremeReactorsData.ReactorConversions_reactions.values().stream()
         .collect(
             ImmutableSortedMap.toImmutableSortedMap(
                 Comparator.naturalOrder(),
@@ -64,15 +60,12 @@ public class FuelRecipes {
   }
 
   private static ImmutableMap<String, List<String>> getFuelOreDictMapping() {
-    return ExtremeReactorsData.Reactants_reactantToSolid.entrySet()
-        .stream()
+    return ExtremeReactorsData.Reactants_reactantToSolid.entrySet().stream()
         .collect(
             Collectors.toMap(
                 Map.Entry::getKey,
                 entry ->
-                    entry
-                        .getValue()
-                        .stream()
+                    entry.getValue().stream()
                         .map(SourceProductMapping::getProduct)
                         .distinct()
                         .filter(OreDictHelper::doesOreExist)

@@ -32,9 +32,8 @@ public class TurbineCategory extends BlankJEIRecipeCategory<TurbineWrapper> {
   }
 
   @SuppressFBWarnings(
-    value = "NP_NONNULL_PARAM_VIOLATION",
-    justification = "BrBlocks.turbineBearing won't be null at runtime!"
-  )
+      value = "NP_NONNULL_PARAM_VIOLATION",
+      justification = "BrBlocks.turbineBearing won't be null at runtime!")
   public TurbineCategory(IGuiHelper guiHelper) {
     super(guiHelper.createDrawableIngredient(new ItemStack(BrBlocks.turbineBearing, 1, 0)));
 
