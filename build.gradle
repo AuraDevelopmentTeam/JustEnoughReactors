@@ -9,16 +9,13 @@ repositories {
         name "zerocore"
         url "http://maven.zerono.it"
     }
-    flatDir {
-        dirs "lib"
-    }
 }
 
 dependencies {
-    deobfCompile "mezz.jei:jei_${minecraft_version}:${jei_version}"
+    api fg.deobf("mezz.jei:jei_${minecraft_version}:${jei_version}")
 
-    deobfCompile "erogenousbeef:ExtremeReactors-${minecraft_version}:+"
-    deobfCompile("it.zerono.mods.zerocore:zerocore:${minecraft_version}-${zerocore_version}") {
+    api fg.deobf("curse.maven:ExtremeReactors:${extremeReactors_id}") // https://www.curseforge.com/minecraft/mc-mods/extreme-reactors/files/all?filter-game-version=1738749986%3A628
+    api fg.deobf("it.zerono.mods.zerocore:zerocore:${minecraft_version}-${zerocore_version}") {
         exclude module: "ComputerCraft"
     }
 }
